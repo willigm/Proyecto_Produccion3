@@ -14,6 +14,34 @@ class q:
         return q
 
 
+class n_pedidos:
+    def __init__(self,demanda,q):
+        self.demanda = demanda
+        self.q = q
+    
+    def calcula_n_pedidos(self):
+        return (self.demanda / self.q)
+
+class tiempo_entre_pedidos:
+    def __init__(self,pedido):
+        self.pedido = pedido
+    
+    def tiempo_entre_pedido(self):
+        dias = 360
+        tiempo = float(dias / self.pedido)
+        return tiempo
+
+
 #Prueba
 william = q(1500000,80,10,2.5)
-print(william.calcular_q())
+q = william.calcular_q()
+print(q)
+
+
+moises = n_pedidos(1500000,q)
+np = moises.calcula_n_pedidos()
+print(np)
+
+oscar = tiempo_entre_pedidos(np)
+tp = oscar.tiempo_entre_pedido()
+print(tp)
